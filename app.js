@@ -11,7 +11,7 @@ var sys = require('sys'),
 var proximity = '100000';
 
 // var feed = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom';
-var feed = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_hour.atom';
+var feed = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.atom';
 
 var watcher = new Watcher(feed);
 
@@ -40,9 +40,11 @@ watcher.on('new article', function(quake){
 watcher.run(function(err, quakes) {
   if (err)
     console.error(err);
-  smallQuakes = [quakes[0]];
-  smallQuakes.map(utils.extractDataFromQuake).forEach(function(quakeData) {
-    // fetchFollowersAndSend(quakeData);
-  });
+  if (quakes && quakes.length > 0) {
+    smallQuakes = [quakes[0]];
+    smallQuakes.map(utils.extractDataFromQuake).forEach(function(quakeData) {
+      // fetchFollowersAndSend(quakeData);
+    });
+  }
 });
 
