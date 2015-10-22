@@ -8,9 +8,10 @@ var sys = require('sys'),
     utils = require('./lib/utils'),
     Promises = require('./lib/promises');
 
-var proximity = '1000000';
+var proximity = '100000';
 
-var feed = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom';
+// var feed = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom';
+var feed = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_hour.atom';
 
 var watcher = new Watcher(feed);
 
@@ -41,7 +42,7 @@ watcher.run(function(err, quakes) {
     console.error(err);
   smallQuakes = [quakes[0]];
   smallQuakes.map(utils.extractDataFromQuake).forEach(function(quakeData) {
-    fetchFollowersAndSend(quakeData);
+    // fetchFollowersAndSend(quakeData);
   });
 });
 
