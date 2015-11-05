@@ -13,7 +13,7 @@ a {
 }
 
 .hero {
-  background-image: url('/images/quakebot-header.png');
+  background-image: url('./images/quakebot-header.png');
   width: 100%;
   height: 500px;
   display: block;
